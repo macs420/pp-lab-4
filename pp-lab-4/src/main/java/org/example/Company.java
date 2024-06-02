@@ -12,8 +12,8 @@ public class Company {
         Employee[] employees = new Employee[5];
 
         for (int index = 0; index < employees.length; index++) {
-            if(index == 0) {
-                employees[index]= new Manager(
+            if (index == 0) {
+                employees[index] = new Manager(
                         "Jan Manager",
                         Math.random() * 24.1,
                         0
@@ -35,6 +35,19 @@ public class Company {
         System.out.println(thirdEmployee.toString());
 
         thirdEmployee.setSalary(Math.random() * 100.25);
+
+        int subordinates = 0;
+        for (int index = 0; index < employees.length; index++) {
+            if (employees[index] instanceof Manager) {
+                continue;
+            }
+
+            subordinates++;
+        }
+
+        ((Manager) employees[0])
+                .setNumberOfSubordinates(subordinates)
+                .setSalary(7500);
 
         for (int index = 0; index < employees.length; index++) {
             System.out.println(employees[index].toString());
